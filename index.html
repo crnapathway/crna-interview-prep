@@ -20,6 +20,9 @@
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
 function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
 function _regenerator() { /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */ var e, t, r = "function" == typeof Symbol ? Symbol : {}, n = r.iterator || "@@iterator", o = r.toStringTag || "@@toStringTag"; function i(r, n, o, i) { var c = n && n.prototype instanceof Generator ? n : Generator, u = Object.create(c.prototype); return _regeneratorDefine2(u, "_invoke", function (r, n, o) { var i, c, u, f = 0, p = o || [], y = !1, G = { p: 0, n: 0, v: e, a: d, f: d.bind(e, 4), d: function d(t, r) { return i = t, c = 0, u = e, G.n = r, a; } }; function d(r, n) { for (c = r, u = n, t = 0; !y && f && !o && t < p.length; t++) { var o, i = p[t], d = G.p, l = i[2]; r > 3 ? (o = l === n) && (u = i[(c = i[4]) ? 5 : (c = 3, 3)], i[4] = i[5] = e) : i[0] <= d && ((o = r < 2 && d < i[1]) ? (c = 0, G.v = n, G.n = i[1]) : d < l && (o = r < 3 || i[0] > n || n > l) && (i[4] = r, i[5] = n, G.n = l, c = 0)); } if (o || r > 1) return a; throw y = !0, n; } return function (o, p, l) { if (f > 1) throw TypeError("Generator is already running"); for (y && 1 === p && d(p, l), c = p, u = l; (t = c < 2 ? e : u) || !y;) { i || (c ? c < 3 ? (c > 1 && (G.n = -1), d(c, u)) : G.n = u : G.v = u); try { if (f = 2, i) { if (c || (o = "next"), t = i[o]) { if (!(t = t.call(i, u))) throw TypeError("iterator result is not an object"); if (!t.done) return t; u = t.value, c < 2 && (c = 0); } else 1 === c && (t = i.return) && t.call(i), c < 2 && (u = TypeError("The iterator does not provide a '" + o + "' method"), c = 1); i = e; } else if ((t = (y = G.n < 0) ? u : r.call(n, G)) !== a) break; } catch (t) { i = e, c = 1, u = t; } finally { f = 1; } } return { value: t, done: y }; }; }(r, o, i), !0), u; } var a = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} t = Object.getPrototypeOf; var c = [][n] ? t(t([][n]())) : (_regeneratorDefine2(t = {}, n, function () { return this; }), t), u = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(c); function f(e) { return Object.setPrototypeOf ? Object.setPrototypeOf(e, GeneratorFunctionPrototype) : (e.__proto__ = GeneratorFunctionPrototype, _regeneratorDefine2(e, o, "GeneratorFunction")), e.prototype = Object.create(u), e; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, _regeneratorDefine2(u, "constructor", GeneratorFunctionPrototype), _regeneratorDefine2(GeneratorFunctionPrototype, "constructor", GeneratorFunction), GeneratorFunction.displayName = "GeneratorFunction", _regeneratorDefine2(GeneratorFunctionPrototype, o, "GeneratorFunction"), _regeneratorDefine2(u), _regeneratorDefine2(u, o, "Generator"), _regeneratorDefine2(u, n, function () { return this; }), _regeneratorDefine2(u, "toString", function () { return "[object Generator]"; }), (_regenerator = function _regenerator() { return { w: i, m: f }; })(); }
 function _regeneratorDefine2(e, r, n, t) { var i = Object.defineProperty; try { i({}, "", {}); } catch (e) { i = 0; } _regeneratorDefine2 = function _regeneratorDefine(e, r, n, t) { function o(r, n) { _regeneratorDefine2(e, r, function (e) { return this._invoke(r, n, e); }); } r ? i ? i(e, r, { value: n, enumerable: !t, configurable: !t, writable: !t }) : e[r] = n : (o("next", 0), o("throw", 1), o("return", 2)); }, _regeneratorDefine2(e, r, n, t); }
 function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
@@ -30,9 +33,6 @@ function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) 
 function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
 function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t.return && (u = t.return(), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
 function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
-function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
-function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
-function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
 var BLUE = "#1B4FD8";
 var BLUE_LIGHT = "#EEF2FF";
 var BORDER = "#E5E7EB";
@@ -82,7 +82,7 @@ var BASE_CATEGORIES = [{
   label: "Questions to Ask Them",
   sub: "What you ask signals how prepared you are"
 }];
-var QUESTIONS = _defineProperty({
+var QUESTIONS = {
   behavioral: ["Tell me about a time when you had to manage a difficult clinical situation. What happened and what did you do?", "Describe a situation where you worked with someone who wasn't pulling their weight. How did you handle it?", "Tell me about a time when you failed. What happened and how did you recover?", "Tell me about a time when you had an ethical dilemma at work. What did you do?", "Give an example of where you showed leadership.", "Tell me about a time when you felt it was you against everyone else and you thought you were right. What did you do?", "Give an example of when you worked on a team. What was your role?", "Give me an example of your problem solving in a high-stakes clinical moment."],
   motivation: ["Why do you want to be a CRNA?", "Why our program specifically?", "Where do you want to be in 5 years?", "How do you feel about giving up a paying job for several years?", "What do you know about this school and our program?", "What does a CRNA do? How do you think your role as an ICU nurse relates to the role and responsibilities of a CRNA?", "If I am accepted, what can I do between now and the beginning of the program to adequately prepare myself?", "How will you be an asset to this program?"],
   selfassessment: ["What are 2 of your weaknesses and 2 of your strengths?", "What is your most important weakness that you will struggle with, if any, toward this profession?", "What is your strongest trait that will help you in your academic and professional career?", "How do you describe success?", "What have you done to develop or change in the last few years?", "If we asked your colleagues, how do others see you?", "How do you think you will fit into the program?"],
@@ -91,7 +91,7 @@ var QUESTIONS = _defineProperty({
   knowledge: ["Walk me through the Frank-Starling mechanism and how it applies to a patient in cardiogenic shock.", "What is the formula for cardiac output and what are the physiologic determinants of each component?", "How do you calculate SVR and what does an elevated SVR tell you clinically?", "A patient has a MAP of 65, CVP of 18, and cardiac index of 1.6. Walk me through your interpretation.", "Explain the difference between preload, afterload, and contractility. How does each affect cardiac output?", "What happens to oxygen delivery when a patient becomes severely anemic? Walk through the DO2 formula.", "Explain the oxyhemoglobin dissociation curve. What shifts it right and what are the clinical implications?", "A ventilated patient suddenly develops worsening hypoxemia and increased peak airway pressures. What is your differential?", "What is the physiologic basis of PEEP and when would you be cautious about increasing it?", "Explain the difference between obstructive, distributive, cardiogenic, and hypovolemic shock at the cellular level.", "What is phenylephrine's mechanism of action and when would you choose it over norepinephrine?", "Walk me through norepinephrine's receptor activity and why it is considered first-line in septic shock.", "What is milrinone's mechanism of action and why does it cause hypotension? When is it useful?", "How does nitroglycerin work and what is the difference between its effects at low versus high doses?", "A patient on high-dose vasopressors develops worsening acidosis and mottling. What is happening physiologically and what are your options?", "Explain the renin-angiotensin-aldosterone system and how it compensates in low-flow states.", "What is the physiologic difference between a Type 1 and Type 2 MI and why does it matter for management?", "Walk me through the coagulation cascade at a high level and explain why a patient with liver failure is coagulopathic.", "What is the cerebral perfusion pressure formula and how does ICP management tie into your hemodynamic goals?", "Explain why a patient with severe aortic stenosis tolerates tachycardia poorly."],
   questions: ["What do you see as your school's strong points?", "How does your program facilitate student growth?", "What do your most successful graduates have in common?", "How do you support students who are struggling academically or clinically?", "What is the relationship like between students and faculty here?", "How has the program evolved over the last few years?", "What does a typical first-year clinical rotation look like?"],
   profile: []
-}, "knowledge", []);
+};
 
 // Profile-triggered question bank keyed by flag
 var PROFILE_QUESTION_BANK = {
@@ -329,4 +329,1020 @@ function CRNAInterviewPrepApp() {
             gpaContext = buildGpaContext();
             profileSummary = [gpaContext || profile.gpa && "GPA: ".concat(profile.gpa), profile.icuMonths && "ICU Experience: ".concat(profile.icuMonths, " months").concat(profile.icuType ? " in ".concat(profile.icuType) : ""), profile.certifications && "Certifications: ".concat(profile.certifications), profile.leadership && "Leadership/Involvement: ".concat(profile.leadership), profile.shadowing && "Shadowing: ".concat(profile.shadowing, " hours"), profile.targetPrograms && "Target Programs: ".concat(profile.targetPrograms)].filter(Boolean).join("\n") || "No profile provided. Use general CRNA admissions context.";
             gpaInstruction = parseFloat(profile.gpa) < 3.2 ? "GPA COACHING NOTE: This applicant has a lower cumulative GPA. Only reference GPA if it is directly relevant to the question or their answer. When you do reference it, coach them to frame academic improvement as a strength - lead with trajectory and context, not the number itself. Do not mention GPA in unrelated feedback." : "GPA COACHING NOTE: Only mention GPA if it is directly relevant to the question or their answer. Do not surface it unnecessarily.";
-            systemPrompt = "You are a CRNA who has served on admissions committees evaluating practice interview answers from ICU nurses applying to CRNA programs.\n\nCategory context: ".concat(CATEGORY_CONTEXT[selectedCategory.id], "\n\nApplicant profile:\n").concat(profileSummary, "\n\n").concat(gpaInstruction, "\n\nReturn ONLY valid JSON with this exact structure:\n{\n  \"verdict\": \"Strong\" | \"Solid\" | \"Needs Work\",\n  \"summary\": \"One direct sentence, max 20 words\",\n  \"whatLanded\": [\"item 1\", \"item 2\"],\n  \"whatWasMissing\": [\"item 1\", \"item 2\"],\n  \"strongerAngle\": \"2-3 sentences on wh
+            systemPrompt = "You are a CRNA who has served on admissions committees evaluating practice interview answers from ICU nurses applying to CRNA programs.\n\nCategory context: ".concat(CATEGORY_CONTEXT[selectedCategory.id], "\n\nApplicant profile:\n").concat(profileSummary, "\n\n").concat(gpaInstruction, "\n\nReturn ONLY valid JSON with this exact structure:\n{\n  \"verdict\": \"Strong\" | \"Solid\" | \"Needs Work\",\n  \"summary\": \"One direct sentence, max 20 words\",\n  \"whatLanded\": [\"item 1\", \"item 2\"],\n  \"whatWasMissing\": [\"item 1\", \"item 2\"],\n  \"strongerAngle\": \"2-3 sentences on what a stronger answer would include. Reference their specific clinical background.\",\n  \"commonMistake\": \"One sentence on the most common mistake candidates make on this question.\",\n  \"profileCoaching\": \"1-2 sentences of coaching tied to their actual profile. Only reference GPA if directly relevant to this question or answer.\"\n}\n\nBe direct and honest. Write like a CRNA, not a coach. No em dashes. No filler. Return only JSON.");
+            _context.p = 2;
+            _context.n = 3;
+            return fetch("https://crnapathway-proxy.rapid-mud-ce8c.workers.dev", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json"
+              },
+              body: JSON.stringify({
+                model: "claude-sonnet-4-20250514",
+                max_tokens: 1000,
+                system: systemPrompt,
+                messages: [{
+                  role: "user",
+                  content: "Question: \"".concat(getQuestion(selectedCategory.id, questionIndex), "\"\n\nAnswer: \"").concat(userAnswer, "\"")
+                }]
+              })
+            });
+          case 3:
+            response = _context.v;
+            _context.n = 4;
+            return response.json();
+          case 4:
+            data = _context.v;
+            if (!data.error) {
+              _context.n = 5;
+              break;
+            }
+            setFeedback({
+              error: true,
+              detail: JSON.stringify(data.error)
+            });
+            setLoading(false);
+            return _context.a(2);
+          case 5:
+            text = ((_data$content = data.content) === null || _data$content === void 0 || (_data$content = _data$content[0]) === null || _data$content === void 0 ? void 0 : _data$content.text) || "";
+            if (text) {
+              _context.n = 6;
+              break;
+            }
+            setFeedback({
+              error: true,
+              detail: "Empty: " + JSON.stringify(data).slice(0, 200)
+            });
+            setLoading(false);
+            return _context.a(2);
+          case 6:
+            parsed = JSON.parse(text.replace(/```json|```/g, "").trim());
+            setFeedback(parsed);
+            setSessionCount(function (c) {
+              return c + 1;
+            });
+            setTimeout(function () {
+              var _feedbackRef$current;
+              return (_feedbackRef$current = feedbackRef.current) === null || _feedbackRef$current === void 0 ? void 0 : _feedbackRef$current.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+              });
+            }, 100);
+            _context.n = 8;
+            break;
+          case 7:
+            _context.p = 7;
+            _t = _context.v;
+            setFeedback({
+              error: true,
+              detail: _t.message
+            });
+          case 8:
+            setLoading(false);
+          case 9:
+            return _context.a(2);
+        }
+      }, _callee, null, [[2, 7]]);
+    }));
+    return function submitAnswer() {
+      return _ref.apply(this, arguments);
+    };
+  }();
+  var verdictConfig = {
+    "Strong": {
+      bg: GREEN_BG,
+      border: GREEN_BORDER,
+      color: GREEN
+    },
+    "Solid": {
+      bg: AMBER_BG,
+      border: AMBER_BORDER,
+      color: AMBER
+    },
+    "Needs Work": {
+      bg: RED_BG,
+      border: RED_BORDER,
+      color: RED
+    }
+  };
+  var inputStyle = {
+    width: "100%",
+    boxSizing: "border-box",
+    padding: "10px 12px",
+    border: "1px solid ".concat(BORDER),
+    borderRadius: 6,
+    fontSize: 14,
+    color: TEXT,
+    background: WHITE,
+    outline: "none",
+    fontFamily: "inherit"
+  };
+  var labelStyle = {
+    fontSize: 11,
+    fontWeight: 700,
+    color: TEXT_MUTED,
+    textTransform: "uppercase",
+    letterSpacing: "0.06em",
+    display: "block",
+    marginBottom: 5
+  };
+  var Nav = function Nav(_ref2) {
+    var onBack = _ref2.onBack;
+    return /*#__PURE__*/React.createElement("div", {
+      style: {
+        background: WHITE,
+        borderBottom: "1px solid ".concat(BORDER),
+        padding: "10px 16px",
+        display: "flex",
+        alignItems: "center",
+        gap: 10,
+        minHeight: 64
+      }
+    }, onBack && /*#__PURE__*/React.createElement("button", {
+      onClick: onBack,
+      style: {
+        background: "none",
+        border: "none",
+        color: TEXT_MUTED,
+        cursor: "pointer",
+        fontSize: 22,
+        padding: "0 6px 0 0",
+        lineHeight: 1
+      }
+    }, "\u2039"), /*#__PURE__*/React.createElement("img", {
+      src: LOGO_SRC,
+      alt: "CRNAPathway",
+      style: {
+        height: 72,
+        width: "auto"
+      }
+    }));
+  };
+
+  // PROFILE SCREEN
+  if (screen === "profile") return /*#__PURE__*/React.createElement("div", {
+    style: {
+      minHeight: "100vh",
+      background: BG,
+      fontFamily: "'Inter', system-ui, sans-serif",
+      color: TEXT
+    }
+  }, /*#__PURE__*/React.createElement(Nav, null), /*#__PURE__*/React.createElement("div", {
+    style: {
+      padding: "24px 16px",
+      maxWidth: 480,
+      margin: "0 auto"
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      marginBottom: 20
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 11,
+      fontWeight: 700,
+      color: BLUE,
+      letterSpacing: "0.08em",
+      textTransform: "uppercase",
+      marginBottom: 6
+    }
+  }, "Interview Prep"), /*#__PURE__*/React.createElement("h1", {
+    style: {
+      fontSize: 24,
+      fontWeight: 700,
+      margin: "0 0 10px",
+      color: TEXT,
+      lineHeight: 1.2
+    }
+  }, "Better feedback starts with your profile."), /*#__PURE__*/React.createElement("p", {
+    style: {
+      fontSize: 14,
+      color: TEXT,
+      margin: "0 0 12px",
+      lineHeight: 1.7,
+      fontWeight: 500
+    }
+  }, "Generic interview prep exists everywhere. This is not that."), /*#__PURE__*/React.createElement("p", {
+    style: {
+      fontSize: 14,
+      color: TEXT_MUTED,
+      margin: "0 0 12px",
+      lineHeight: 1.7
+    }
+  }, "When you fill in your stats, the tool evaluates your answers the same way an admissions committee would - against your actual GPA, your ICU background, and the programs you are targeting. It flags what you are not saying that you should be, and tells you how to frame your experience in a way that lands."), /*#__PURE__*/React.createElement("p", {
+    style: {
+      fontSize: 14,
+      color: TEXT_MUTED,
+      margin: 0,
+      lineHeight: 1.7
+    }
+  }, "Fill in what you can. The more you give it, the more specific it gets.")), /*#__PURE__*/React.createElement("div", {
+    style: {
+      background: WHITE,
+      border: "1px solid ".concat(BORDER),
+      borderRadius: 8,
+      padding: 16,
+      marginBottom: 14,
+      display: "flex",
+      flexDirection: "column",
+      gap: 14
+    }
+  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("label", {
+    style: labelStyle
+  }, "Cumulative GPA"), /*#__PURE__*/React.createElement("input", {
+    style: inputStyle,
+    placeholder: "e.g. 3.4",
+    value: profile.gpa,
+    onChange: function onChange(e) {
+      return setProfile(function (p) {
+        return _objectSpread(_objectSpread({}, p), {}, {
+          gpa: e.target.value
+        });
+      });
+    },
+    onFocus: function onFocus(e) {
+      return e.target.style.borderColor = BLUE;
+    },
+    onBlur: function onBlur(e) {
+      return e.target.style.borderColor = BORDER;
+    }
+  })), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      gap: 10
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      flex: 1
+    }
+  }, /*#__PURE__*/React.createElement("label", {
+    style: labelStyle
+  }, "ICU Months"), /*#__PURE__*/React.createElement("input", {
+    style: inputStyle,
+    placeholder: "e.g. 24",
+    value: profile.icuMonths,
+    onChange: function onChange(e) {
+      return setProfile(function (p) {
+        return _objectSpread(_objectSpread({}, p), {}, {
+          icuMonths: e.target.value
+        });
+      });
+    },
+    onFocus: function onFocus(e) {
+      return e.target.style.borderColor = BLUE;
+    },
+    onBlur: function onBlur(e) {
+      return e.target.style.borderColor = BORDER;
+    }
+  })), /*#__PURE__*/React.createElement("div", {
+    style: {
+      flex: 2
+    }
+  }, /*#__PURE__*/React.createElement("label", {
+    style: labelStyle
+  }, "ICU Type"), /*#__PURE__*/React.createElement("input", {
+    style: inputStyle,
+    placeholder: "e.g. CVICU, MICU",
+    value: profile.icuType,
+    onChange: function onChange(e) {
+      return setProfile(function (p) {
+        return _objectSpread(_objectSpread({}, p), {}, {
+          icuType: e.target.value
+        });
+      });
+    },
+    onFocus: function onFocus(e) {
+      return e.target.style.borderColor = BLUE;
+    },
+    onBlur: function onBlur(e) {
+      return e.target.style.borderColor = BORDER;
+    }
+  }))), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("label", {
+    style: labelStyle
+  }, "Certifications"), /*#__PURE__*/React.createElement("input", {
+    style: inputStyle,
+    placeholder: "e.g. CCRN, CMC, or None",
+    value: profile.certifications,
+    onChange: function onChange(e) {
+      return setProfile(function (p) {
+        return _objectSpread(_objectSpread({}, p), {}, {
+          certifications: e.target.value
+        });
+      });
+    },
+    onFocus: function onFocus(e) {
+      return e.target.style.borderColor = BLUE;
+    },
+    onBlur: function onBlur(e) {
+      return e.target.style.borderColor = BORDER;
+    }
+  })), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("label", {
+    style: labelStyle
+  }, "Leadership & Involvement"), /*#__PURE__*/React.createElement("input", {
+    style: inputStyle,
+    placeholder: "e.g. charge nurse, unit committee, precepting",
+    value: profile.leadership,
+    onChange: function onChange(e) {
+      return setProfile(function (p) {
+        return _objectSpread(_objectSpread({}, p), {}, {
+          leadership: e.target.value
+        });
+      });
+    },
+    onFocus: function onFocus(e) {
+      return e.target.style.borderColor = BLUE;
+    },
+    onBlur: function onBlur(e) {
+      return e.target.style.borderColor = BORDER;
+    }
+  })), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("label", {
+    style: labelStyle
+  }, "Shadowing Hours"), /*#__PURE__*/React.createElement("input", {
+    style: inputStyle,
+    placeholder: "e.g. 24, or 0 if none",
+    value: profile.shadowing,
+    onChange: function onChange(e) {
+      return setProfile(function (p) {
+        return _objectSpread(_objectSpread({}, p), {}, {
+          shadowing: e.target.value
+        });
+      });
+    },
+    onFocus: function onFocus(e) {
+      return e.target.style.borderColor = BLUE;
+    },
+    onBlur: function onBlur(e) {
+      return e.target.style.borderColor = BORDER;
+    }
+  })), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("label", {
+    style: labelStyle
+  }, "Target Programs"), /*#__PURE__*/React.createElement("input", {
+    style: inputStyle,
+    placeholder: "e.g. Penn, Jefferson, UPMC",
+    value: profile.targetPrograms,
+    onChange: function onChange(e) {
+      return setProfile(function (p) {
+        return _objectSpread(_objectSpread({}, p), {}, {
+          targetPrograms: e.target.value
+        });
+      });
+    },
+    onFocus: function onFocus(e) {
+      return e.target.style.borderColor = BLUE;
+    },
+    onBlur: function onBlur(e) {
+      return e.target.style.borderColor = BORDER;
+    }
+  })), /*#__PURE__*/React.createElement("div", {
+    style: {
+      background: BLUE_LIGHT,
+      border: "1px solid #C7D2FE",
+      borderRadius: 6,
+      padding: "10px 12px"
+    }
+  }, /*#__PURE__*/React.createElement("p", {
+    style: {
+      margin: 0,
+      fontSize: 12,
+      color: "#1E40AF",
+      lineHeight: 1.6
+    }
+  }, "If your cumulative GPA does not tell the full story - strong science GPA, strong last 60 credits, upward trend - note that in the Leadership field. It will be factored into your feedback."))), /*#__PURE__*/React.createElement("button", {
+    onClick: saveProfile,
+    style: {
+      width: "100%",
+      padding: "13px",
+      background: BLUE,
+      border: "none",
+      borderRadius: 8,
+      color: WHITE,
+      fontSize: 15,
+      fontWeight: 600,
+      cursor: "pointer",
+      fontFamily: "inherit",
+      marginBottom: 10
+    }
+  }, "Start Practicing"), /*#__PURE__*/React.createElement("button", {
+    onClick: function onClick() {
+      setProfileSaved(false);
+      setScreen("home");
+    },
+    style: {
+      width: "100%",
+      background: "none",
+      border: "none",
+      color: TEXT_MUTED,
+      fontSize: 13,
+      cursor: "pointer",
+      textAlign: "center",
+      padding: 4
+    }
+  }, "Skip for now")));
+
+  // HOME SCREEN
+  if (screen === "home") return /*#__PURE__*/React.createElement("div", {
+    style: {
+      minHeight: "100vh",
+      background: BG,
+      fontFamily: "'Inter', system-ui, sans-serif",
+      color: TEXT
+    }
+  }, /*#__PURE__*/React.createElement(Nav, null), /*#__PURE__*/React.createElement("div", {
+    style: {
+      padding: "20px 16px",
+      maxWidth: 480,
+      margin: "0 auto"
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      marginBottom: 20
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 11,
+      fontWeight: 700,
+      color: BLUE,
+      letterSpacing: "0.08em",
+      textTransform: "uppercase",
+      marginBottom: 6
+    }
+  }, "Interview Prep"), /*#__PURE__*/React.createElement("h1", {
+    style: {
+      fontSize: 26,
+      fontWeight: 700,
+      margin: "0 0 10px",
+      color: TEXT,
+      lineHeight: 1.2
+    }
+  }, "The most important thing you can do right now is practice."), /*#__PURE__*/React.createElement("p", {
+    style: {
+      fontSize: 14,
+      color: TEXT_MUTED,
+      margin: 0,
+      lineHeight: 1.7
+    }
+  }, "Our brand new Interview Prep tool reads your responses and gives you real feedback - what landed, what was missing, and exactly how to make your answer stronger. Built for CRNA applicants, personalized to your profile.")), /*#__PURE__*/React.createElement("div", {
+    style: {
+      background: YELLOW,
+      border: "1px solid ".concat(YELLOW_BORDER),
+      borderRadius: 8,
+      padding: "12px 14px",
+      marginBottom: 14
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 11,
+      fontWeight: 700,
+      color: YELLOW_TEXT,
+      letterSpacing: "0.06em",
+      textTransform: "uppercase",
+      marginBottom: 4
+    }
+  }, "Why This Matters"), /*#__PURE__*/React.createElement("p", {
+    style: {
+      margin: 0,
+      fontSize: 13,
+      color: YELLOW_TEXT,
+      lineHeight: 1.6
+    }
+  }, "Based on our accepted applicant data, the interview is the single biggest factor in whether a competitive applicant gets in. Preparation is what separates candidates with similar stats.")), /*#__PURE__*/React.createElement("div", {
+    style: {
+      background: WHITE,
+      border: "1px solid ".concat(BORDER),
+      borderRadius: 8,
+      padding: "12px 14px",
+      marginBottom: 14,
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "space-between"
+    }
+  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 11,
+      fontWeight: 700,
+      color: TEXT_MUTED,
+      letterSpacing: "0.06em",
+      textTransform: "uppercase",
+      marginBottom: 3
+    }
+  }, "Your Profile"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 13,
+      color: TEXT,
+      fontWeight: 500
+    }
+  }, profileSaved ? [profile.icuMonths && "".concat(profile.icuMonths, " mo ").concat(profile.icuType || "ICU"), profile.certifications, profile.targetPrograms].filter(Boolean).join(" · ") || "Profile saved" : "No profile entered - feedback will be general")), /*#__PURE__*/React.createElement("button", {
+    onClick: function onClick() {
+      return setScreen("profile");
+    },
+    style: {
+      background: BLUE_LIGHT,
+      border: "1px solid #C7D2FE",
+      borderRadius: 6,
+      padding: "6px 12px",
+      fontSize: 12,
+      color: BLUE,
+      cursor: "pointer",
+      fontWeight: 600,
+      whiteSpace: "nowrap",
+      flexShrink: 0
+    }
+  }, profileSaved ? "Edit" : "Add")), sessionCount > 0 && /*#__PURE__*/React.createElement("div", {
+    style: {
+      background: GREEN_BG,
+      border: "1px solid ".concat(GREEN_BORDER),
+      borderRadius: 8,
+      padding: "10px 14px",
+      marginBottom: 14,
+      fontSize: 13,
+      color: GREEN,
+      fontWeight: 600
+    }
+  }, sessionCount, " question", sessionCount !== 1 ? "s" : "", " practiced this session"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 11,
+      fontWeight: 700,
+      color: TEXT_MUTED,
+      letterSpacing: "0.06em",
+      textTransform: "uppercase",
+      marginBottom: 10
+    }
+  }, "Choose a Category"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      flexDirection: "column",
+      gap: 6
+    }
+  }, getCategories().map(function (cat) {
+    return /*#__PURE__*/React.createElement("button", {
+      key: cat.id,
+      onClick: function onClick() {
+        return selectCategory(cat);
+      },
+      style: {
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-between",
+        padding: "13px 14px",
+        background: cat.id === "profile" ? BLUE_LIGHT : WHITE,
+        border: "1px solid ".concat(cat.id === "profile" ? "#C7D2FE" : BORDER),
+        borderRadius: 8,
+        cursor: "pointer",
+        textAlign: "left",
+        width: "100%"
+      },
+      onMouseEnter: function onMouseEnter(e) {
+        e.currentTarget.style.borderColor = BLUE;
+        e.currentTarget.style.background = BLUE_LIGHT;
+      },
+      onMouseLeave: function onMouseLeave(e) {
+        e.currentTarget.style.borderColor = cat.id === "profile" ? "#C7D2FE" : BORDER;
+        e.currentTarget.style.background = cat.id === "profile" ? BLUE_LIGHT : WHITE;
+      }
+    }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 14,
+        fontWeight: 600,
+        color: cat.id === "profile" ? BLUE : TEXT,
+        marginBottom: 1
+      }
+    }, cat.label), /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 12,
+        color: TEXT_MUTED
+      }
+    }, cat.sub)), /*#__PURE__*/React.createElement("span", {
+      style: {
+        color: BLUE,
+        fontSize: 18
+      }
+    }, "\u203A"));
+  })), /*#__PURE__*/React.createElement("div", {
+    style: {
+      textAlign: "center",
+      marginTop: 20,
+      fontSize: 12,
+      color: TEXT_MUTED
+    }
+  }, "Questions updated regularly")));
+
+  // QUESTION SCREEN
+  if (screen === "question") return /*#__PURE__*/React.createElement("div", {
+    style: {
+      minHeight: "100vh",
+      background: BG,
+      fontFamily: "'Inter', system-ui, sans-serif",
+      color: TEXT
+    }
+  }, /*#__PURE__*/React.createElement(Nav, {
+    onBack: function onBack() {
+      return setScreen("home");
+    }
+  }), /*#__PURE__*/React.createElement("div", {
+    style: {
+      padding: "20px 16px",
+      maxWidth: 480,
+      margin: "0 auto"
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "space-between",
+      marginBottom: 14
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 11,
+      fontWeight: 700,
+      color: BLUE,
+      letterSpacing: "0.08em",
+      textTransform: "uppercase"
+    }
+  }, selectedCategory.label), sessionCount > 0 && /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 11,
+      color: TEXT_MUTED,
+      background: WHITE,
+      border: "1px solid ".concat(BORDER),
+      borderRadius: 20,
+      padding: "3px 10px"
+    }
+  }, sessionCount, " practiced")), /*#__PURE__*/React.createElement("div", {
+    style: {
+      background: WHITE,
+      border: "1px solid ".concat(BORDER),
+      borderRadius: 8,
+      padding: "10px 14px",
+      marginBottom: 12
+    }
+  }, /*#__PURE__*/React.createElement("p", {
+    style: {
+      margin: 0,
+      fontSize: 12,
+      color: TEXT_MUTED,
+      lineHeight: 1.6
+    }
+  }, CATEGORY_CONTEXT[selectedCategory.id])), /*#__PURE__*/React.createElement("div", {
+    style: {
+      background: WHITE,
+      border: "1px solid ".concat(BORDER),
+      borderRadius: 8,
+      padding: 16,
+      marginBottom: 12
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 11,
+      fontWeight: 700,
+      color: BLUE,
+      letterSpacing: "0.08em",
+      textTransform: "uppercase",
+      marginBottom: 8
+    }
+  }, "Question"), /*#__PURE__*/React.createElement("p", {
+    style: {
+      fontSize: 16,
+      lineHeight: 1.6,
+      color: TEXT,
+      margin: "0 0 12px",
+      fontWeight: 500
+    }
+  }, getQuestion(selectedCategory.id, questionIndex)), getTip(selectedCategory.id, questionIndex) && /*#__PURE__*/React.createElement("div", {
+    style: {
+      background: YELLOW,
+      border: "1px solid ".concat(YELLOW_BORDER),
+      borderRadius: 6,
+      padding: "9px 12px",
+      marginBottom: 12,
+      display: "flex",
+      gap: 8,
+      alignItems: "flex-start"
+    }
+  }, /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontSize: 12,
+      flexShrink: 0,
+      marginTop: 1
+    }
+  }, "\uD83D\uDCA1"), /*#__PURE__*/React.createElement("p", {
+    style: {
+      margin: 0,
+      fontSize: 12,
+      lineHeight: 1.6,
+      color: YELLOW_TEXT
+    }
+  }, getTip(selectedCategory.id, questionIndex))), /*#__PURE__*/React.createElement("button", {
+    onClick: nextQuestion,
+    style: {
+      background: "none",
+      border: "1px solid ".concat(BORDER),
+      borderRadius: 6,
+      padding: "5px 12px",
+      fontSize: 12,
+      color: TEXT_MUTED,
+      cursor: "pointer",
+      fontFamily: "inherit"
+    }
+  }, "Different question")), !feedback && !loading && /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 11,
+      fontWeight: 700,
+      color: TEXT_MUTED,
+      letterSpacing: "0.06em",
+      textTransform: "uppercase",
+      marginBottom: 8
+    }
+  }, "Your Answer"), /*#__PURE__*/React.createElement("textarea", {
+    value: userAnswer,
+    onChange: function onChange(e) {
+      return setUserAnswer(e.target.value);
+    },
+    placeholder: "Answer as you would in the room. Complete sentences, specific examples.",
+    rows: 6,
+    style: {
+      width: "100%",
+      boxSizing: "border-box",
+      padding: "12px 14px",
+      border: "1px solid ".concat(BORDER),
+      borderRadius: 8,
+      fontSize: 14,
+      lineHeight: 1.7,
+      color: TEXT,
+      background: WHITE,
+      resize: "vertical",
+      outline: "none",
+      fontFamily: "inherit"
+    },
+    onFocus: function onFocus(e) {
+      return e.target.style.borderColor = BLUE;
+    },
+    onBlur: function onBlur(e) {
+      return e.target.style.borderColor = BORDER;
+    }
+  }), /*#__PURE__*/React.createElement("button", {
+    onClick: submitAnswer,
+    disabled: !userAnswer.trim(),
+    style: {
+      width: "100%",
+      marginTop: 10,
+      padding: "13px",
+      background: userAnswer.trim() ? BLUE : "#D1D5DB",
+      border: "none",
+      borderRadius: 8,
+      color: WHITE,
+      fontSize: 15,
+      fontWeight: 600,
+      cursor: userAnswer.trim() ? "pointer" : "not-allowed",
+      fontFamily: "inherit"
+    }
+  }, "Get Feedback")), loading && /*#__PURE__*/React.createElement("div", {
+    style: {
+      textAlign: "center",
+      padding: "40px 20px"
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      width: 32,
+      height: 32,
+      border: "3px solid ".concat(BLUE_LIGHT),
+      borderTop: "3px solid ".concat(BLUE),
+      borderRadius: "50%",
+      margin: "0 auto 12px",
+      animation: "spin 0.8s linear infinite"
+    }
+  }), /*#__PURE__*/React.createElement("style", null, "@keyframes spin { to { transform: rotate(360deg); } }"), /*#__PURE__*/React.createElement("p", {
+    style: {
+      color: TEXT_MUTED,
+      fontSize: 13,
+      margin: 0
+    }
+  }, "Evaluating your answer...")), feedback && !loading && /*#__PURE__*/React.createElement("div", {
+    ref: feedbackRef
+  }, feedback.error ? /*#__PURE__*/React.createElement("div", {
+    style: {
+      background: RED_BG,
+      border: "1px solid ".concat(RED_BORDER),
+      borderRadius: 8,
+      padding: 16,
+      fontSize: 14,
+      color: RED
+    }
+  }, /*#__PURE__*/React.createElement("div", null, "Something went wrong. Try submitting again."), feedback.detail && /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 11,
+      marginTop: 8,
+      color: RED_BORDER,
+      wordBreak: "break-all"
+    }
+  }, feedback.detail)) : /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      flexDirection: "column",
+      gap: 10
+    }
+  }, function () {
+    var vc = verdictConfig[feedback.verdict] || verdictConfig["Solid"];
+    return /*#__PURE__*/React.createElement("div", {
+      style: {
+        background: vc.bg,
+        border: "1px solid ".concat(vc.border),
+        borderRadius: 8,
+        padding: "13px 14px"
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 13,
+        fontWeight: 700,
+        color: vc.color,
+        marginBottom: 4
+      }
+    }, feedback.verdict), /*#__PURE__*/React.createElement("p", {
+      style: {
+        margin: 0,
+        fontSize: 14,
+        color: TEXT,
+        lineHeight: 1.5
+      }
+    }, feedback.summary));
+  }(), ((_feedback$whatLanded = feedback.whatLanded) === null || _feedback$whatLanded === void 0 ? void 0 : _feedback$whatLanded.length) > 0 && /*#__PURE__*/React.createElement("div", {
+    style: {
+      background: WHITE,
+      border: "1px solid ".concat(BORDER),
+      borderRadius: 8,
+      padding: "13px 14px"
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 11,
+      fontWeight: 700,
+      color: GREEN,
+      letterSpacing: "0.06em",
+      textTransform: "uppercase",
+      marginBottom: 8
+    }
+  }, "What Landed"), feedback.whatLanded.map(function (item, i) {
+    return /*#__PURE__*/React.createElement("div", {
+      key: i,
+      style: {
+        display: "flex",
+        gap: 8,
+        marginBottom: 5,
+        fontSize: 13,
+        lineHeight: 1.6,
+        color: TEXT
+      }
+    }, /*#__PURE__*/React.createElement("span", {
+      style: {
+        color: GREEN,
+        fontWeight: 700,
+        flexShrink: 0
+      }
+    }, "+"), item);
+  })), ((_feedback$whatWasMiss = feedback.whatWasMissing) === null || _feedback$whatWasMiss === void 0 ? void 0 : _feedback$whatWasMiss.length) > 0 && /*#__PURE__*/React.createElement("div", {
+    style: {
+      background: WHITE,
+      border: "1px solid ".concat(BORDER),
+      borderRadius: 8,
+      padding: "13px 14px"
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 11,
+      fontWeight: 700,
+      color: RED,
+      letterSpacing: "0.06em",
+      textTransform: "uppercase",
+      marginBottom: 8
+    }
+  }, "What Was Missing"), feedback.whatWasMissing.map(function (item, i) {
+    return /*#__PURE__*/React.createElement("div", {
+      key: i,
+      style: {
+        display: "flex",
+        gap: 8,
+        marginBottom: 5,
+        fontSize: 13,
+        lineHeight: 1.6,
+        color: TEXT
+      }
+    }, /*#__PURE__*/React.createElement("span", {
+      style: {
+        color: RED,
+        fontWeight: 700,
+        flexShrink: 0
+      }
+    }, "-"), item);
+  })), /*#__PURE__*/React.createElement("div", {
+    style: {
+      background: WHITE,
+      border: "1px solid ".concat(BORDER),
+      borderLeft: "3px solid ".concat(BLUE),
+      borderRadius: "0 8px 8px 0",
+      padding: "13px 14px"
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 11,
+      fontWeight: 700,
+      color: BLUE,
+      letterSpacing: "0.06em",
+      textTransform: "uppercase",
+      marginBottom: 6
+    }
+  }, "A Stronger Angle"), /*#__PURE__*/React.createElement("p", {
+    style: {
+      margin: 0,
+      fontSize: 13,
+      lineHeight: 1.7,
+      color: TEXT
+    }
+  }, feedback.strongerAngle)), /*#__PURE__*/React.createElement("div", {
+    style: {
+      background: BLUE_LIGHT,
+      border: "1px solid #C7D2FE",
+      borderRadius: 8,
+      padding: "13px 14px"
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 11,
+      fontWeight: 700,
+      color: BLUE,
+      letterSpacing: "0.06em",
+      textTransform: "uppercase",
+      marginBottom: 6
+    }
+  }, "Your Profile"), /*#__PURE__*/React.createElement("p", {
+    style: {
+      margin: 0,
+      fontSize: 13,
+      lineHeight: 1.7,
+      color: "#1E40AF"
+    }
+  }, feedback.profileCoaching)), /*#__PURE__*/React.createElement("div", {
+    style: {
+      background: AMBER_BG,
+      border: "1px solid ".concat(AMBER_BORDER),
+      borderRadius: 8,
+      padding: "11px 14px"
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 11,
+      fontWeight: 700,
+      color: AMBER,
+      letterSpacing: "0.06em",
+      textTransform: "uppercase",
+      marginBottom: 5
+    }
+  }, "Common Mistake"), /*#__PURE__*/React.createElement("p", {
+    style: {
+      margin: 0,
+      fontSize: 13,
+      lineHeight: 1.6,
+      color: "#78350F"
+    }
+  }, feedback.commonMistake)), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      gap: 8,
+      marginTop: 2
+    }
+  }, /*#__PURE__*/React.createElement("button", {
+    onClick: nextQuestion,
+    style: {
+      flex: 1,
+      padding: "13px",
+      background: BLUE,
+      border: "none",
+      borderRadius: 8,
+      color: WHITE,
+      fontSize: 14,
+      fontWeight: 600,
+      cursor: "pointer",
+      fontFamily: "inherit"
+    }
+  }, "Next Question"), /*#__PURE__*/React.createElement("button", {
+    onClick: function onClick() {
+      return setScreen("home");
+    },
+    style: {
+      padding: "13px 14px",
+      background: WHITE,
+      border: "1px solid ".concat(BORDER),
+      borderRadius: 8,
+      color: TEXT_MUTED,
+      fontSize: 14,
+      cursor: "pointer",
+      fontFamily: "inherit"
+    }
+  }, "Categories"))))));
+}
+
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(React.createElement(CRNAInterviewPrepApp));
+  </script>
+</body>
+</html>
